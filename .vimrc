@@ -1,0 +1,102 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'scrooloose/nerdtree.git'
+
+Plugin 'junegunn/fzf'
+
+Plugin 'junegunn/fzf.vim'
+
+Plugin 'altercation/vim-colors-solarized'
+
+Plugin 'octol/vim-cpp-enhanced-highlight'
+
+Plugin 'tpope/vim-fugitive'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+"set runtimepath+=~/.vim/bundle/YouCompleteMe
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_highlighting = 0
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+
+" If not set then the syntax highlighting is disabled when returning from
+" CTRL+O
+set hidden
+
+" Color scheme
+"syntax enable
+set background=dark
+colorscheme solarized
+
+" NERDTree accessible from CTRL+e
+map <C-e> :NERDTreeToggle<CR>
+" Show hidden file
+let NERDTreeShowHidden=1
+
+" remap ESC to jj
+imap jk <Esc>
+
+set tags+=.tags;$HOME
+
+"remap Rg. Rg is the command for ripgrep which is a replacement for grep
+"written in Rust
+let g:rg_command = '
+  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
+  \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
+  \ -g "!{.git,node_modules,vendor}/*" '
+
+command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
+
+"Search as you type 
+set incsearch
+
+" vim-cpp-enhanced-highlight plugin settings 
+let g:cpp_member_variable_highlight = 1
+
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
+" size of a hard tabstop
+set tabstop=4
+" always uses spaces instead of tab characters
+set expandtab
+" size of an indent
+set shiftwidth=4
+
+command Bd bp|bd#
+
+map <F5> :!cscope -f.cscope.out -Rbqk<CR>:cs add .cscope.out<CR><CR>
