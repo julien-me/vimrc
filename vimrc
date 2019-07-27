@@ -97,6 +97,7 @@ set expandtab
 " size of an indent
 set shiftwidth=4
 
-command Bd bp|bd#
+command! Bd bp|bd#
 
 map <F5> :!cscope -f.cscope.out -Rbqk<CR>:cs add .cscope.out<CR><CR>
+map <F6> :!ctags -R -f .tags<CR>
