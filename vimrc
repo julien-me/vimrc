@@ -48,7 +48,7 @@ nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 set hidden
 
 " Color scheme
-"syntax enable
+syntax enable
 set background=dark
 colorscheme solarized
 
