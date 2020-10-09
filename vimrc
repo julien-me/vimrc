@@ -18,15 +18,21 @@ Plugin 'junegunn/fzf'
 
 Plugin 'junegunn/fzf.vim'
 
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'tyrannicaltoucan/vim-deep-space'
 
 Plugin 'octol/vim-cpp-enhanced-highlight'
+
+Plugin 'rust-lang/rust.vim'
+
+Plugin 'vimwiki/vimwiki'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
+" filetype plugin on
+syntax on
+
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -50,7 +56,17 @@ set hidden
 " Color scheme
 syntax enable
 set background=dark
-colorscheme solarized
+set termguicolors
+colorscheme deep-space
+"colorscheme solarized
+if &term =~# '^screen'
+   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+let g:deepspace_italics=1
+
+" Parenthesis matching highlight settings
+hi MatchParen guibg=NONE guifg=green
 
 " NERDTree accessible from CTRL+e
 map <C-e> :NERDTreeToggle<CR>
@@ -85,17 +101,31 @@ inoremap ' ''<left>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
+"inoremap () ()<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
 " size of a hard tabstop
-set tabstop=4
+set tabstop=2
 " always uses spaces instead of tab characters
 set expandtab
 " size of an indent
-set shiftwidth=4
+set shiftwidth=2
 
 command! Bd bp|bd#
 
 map <F5> :!cscope -f.cscope.out -Rbqk<CR>:cs add .cscope.out<CR><CR>
 map <F6> :!ctags -R -f .tags<CR>
+
+" fuzzy search in file
+nnoremap / /
+nnoremap // :BLines<CR>
+
+" fuzzy search with fzf
+nnoremap <C-p> :FZF<CR>
+
+" fold on indent
+set foldmethod=indent
+
+" ycm settings
+let g:ycm_autoclose_preview_window_after_completion = 1
