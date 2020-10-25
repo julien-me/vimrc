@@ -18,7 +18,8 @@ Plugin 'junegunn/fzf'
 
 Plugin 'junegunn/fzf.vim'
 
-Plugin 'tyrannicaltoucan/vim-deep-space'
+"Plugin 'tyrannicaltoucan/vim-deep-space'
+Plugin 'NLKNguyen/papercolor-theme'
 
 Plugin 'octol/vim-cpp-enhanced-highlight'
 
@@ -33,6 +34,21 @@ filetype plugin indent on    " required
 " filetype plugin on
 syntax on
 
+" Color scheme
+syntax enable
+"set background=dark
+set t_Co=256
+set background=dark
+if &term =~# '^screen'
+   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+set termguicolors
+colorscheme PaperColor
+"colorscheme deep-space
+"colorscheme solarized
+"let g:deepspace_italics=1
+
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -44,6 +60,7 @@ syntax on
 " Put your non-Plugin stuff after this line
 
 "set runtimepath+=~/.vim/bundle/YouCompleteMe
+let g:ycm_max_diagnostics_to_display = 0
 let g:ycm_show_diagnostics_ui = 0
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_enable_diagnostic_highlighting = 0
@@ -52,18 +69,6 @@ nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 " If not set then the syntax highlighting is disabled when returning from
 " CTRL+O
 set hidden
-
-" Color scheme
-syntax enable
-set background=dark
-set termguicolors
-colorscheme deep-space
-"colorscheme solarized
-if &term =~# '^screen'
-   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
-let g:deepspace_italics=1
 
 " Parenthesis matching highlight settings
 hi MatchParen guibg=NONE guifg=green
@@ -132,3 +137,6 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 
 " run rustfmt after every save
 let g:rustfmt_autosave = 1
+
+set spellfile=$HOME/.vim/spell/en.utf-8.add
+
