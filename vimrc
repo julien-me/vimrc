@@ -27,6 +27,8 @@ Plugin 'rust-lang/rust.vim'
 
 Plugin 'vimwiki/vimwiki'
 
+Plugin 'dense-analysis/ale'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -140,3 +142,11 @@ let g:rustfmt_autosave = 1
 
 set spellfile=$HOME/.vim/spell/en.utf-8.add
 
+" ALE linter config
+let g:ale_linters = {
+      \ 'python': ['pylint', 'autopep8'],
+      \ }
+
+let g:ale_python_autopep8_options = '--in-place --aggressive --aggressive'
+let g:ale_python_pylint_options = '--load-plugins pylint-django'
+let g:ale_fix_on_save = 1
