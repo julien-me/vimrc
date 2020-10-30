@@ -143,10 +143,11 @@ let g:rustfmt_autosave = 1
 set spellfile=$HOME/.vim/spell/en.utf-8.add
 
 " ALE linter config
+let g:ale_python_autopep8_options = '--aggressive --aggressive'
+let g:ale_python_pylint_options = '--load-plugins pylint_django'
+
 let g:ale_linters = {
       \ 'python': ['pylint', 'autopep8'],
       \ }
-
-let g:ale_python_autopep8_options = '--in-place --aggressive --aggressive'
-let g:ale_python_pylint_options = '--load-plugins pylint-django'
+let g:ale_fixers = {'python': ['autopep8']}
 let g:ale_fix_on_save = 1
