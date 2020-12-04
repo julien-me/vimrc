@@ -47,9 +47,6 @@ if &term =~# '^screen'
 endif
 set termguicolors
 colorscheme PaperColor
-"colorscheme deep-space
-"colorscheme solarized
-"let g:deepspace_italics=1
 
 "
 " Brief help
@@ -97,9 +94,6 @@ command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>),
 "Search as you type 
 set incsearch
 
-" vim-cpp-enhanced-highlight plugin settings 
-let g:cpp_member_variable_highlight = 1
-
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 
@@ -137,17 +131,7 @@ set foldmethod=indent
 " ycm settings
 let g:ycm_autoclose_preview_window_after_completion = 1
 
-" run rustfmt after every save
-let g:rustfmt_autosave = 1
-
 set spellfile=$HOME/.vim/spell/en.utf-8.add
 
-" ALE linter config
-let g:ale_python_autopep8_options = '--aggressive --aggressive'
-let g:ale_python_pylint_options = '--load-plugins pylint_django'
-
-let g:ale_linters = {
-      \ 'python': ['pylint', 'autopep8'],
-      \ }
-let g:ale_fixers = {'python': ['autopep8']}
-let g:ale_fix_on_save = 1
+"ALE config
+let g:ale_linters_explicit = 1
