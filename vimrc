@@ -110,6 +110,10 @@ inoremap {;<CR> {<CR>};<ESC>O
 " move to the beginning of the first word of the line
 nnoremap 00 0w
 
+" delete within parentheses
+nnoremap din di)
+
+
 " size of a hard tabstop
 set tabstop=2
 " always uses spaces instead of tab characters
