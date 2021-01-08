@@ -47,6 +47,7 @@ if &term =~# '^screen'
 endif
 set termguicolors
 colorscheme PaperColor
+set background=light
 
 "
 " Brief help
@@ -106,6 +107,8 @@ inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
+nnoremap 00 0w
+
 " size of a hard tabstop
 set tabstop=2
 " always uses spaces instead of tab characters
@@ -127,6 +130,12 @@ nnoremap <C-p> :FZF<CR>
 
 " fold on indent
 set foldmethod=indent
+
+" show line number at the bottom right
+set ruler
+
+" show file name at the bottom
+set laststatus=2
 
 " ycm settings
 let g:ycm_autoclose_preview_window_after_completion = 1
