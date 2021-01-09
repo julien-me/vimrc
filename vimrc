@@ -107,12 +107,14 @@ inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
-" move to the beginning of the first word of the line
-nnoremap 00 0w
+" move to the beginning of the non blank character of the line
+nnoremap 00 ^
 
 " delete within parentheses
 nnoremap din di)
 
+" comment selected lines
+xnoremap // ^<C-V>I//<ESC>
 
 " size of a hard tabstop
 set tabstop=2
