@@ -114,7 +114,7 @@ nnoremap 00 ^
 nnoremap din di)
 
 " comment selected lines
-xnoremap // ^<C-V>I//<ESC>
+xnoremap // 0<C-V>I//<ESC>
 
 " size of a hard tabstop
 set tabstop=2
