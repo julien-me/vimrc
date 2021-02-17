@@ -29,6 +29,8 @@ Plugin 'vimwiki/vimwiki'
 
 Plugin 'dense-analysis/ale'
 
+Plugin 'digitaltoad/vim-pug'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -40,12 +42,18 @@ syntax on
 syntax enable
 "set background=dark
 set t_Co=256
-set background=dark
+"set background=dark
 if &term =~# '^screen'
    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 set termguicolors
+
+" Parenthesis matching highlight settings
+" commented out because it seems it is not needed with PaperColor color scheme
+"hi MatchParen guibg=NONE guifg=green
+
+" Color scheme settings
 colorscheme PaperColor
 set background=light
 
@@ -69,9 +77,6 @@ nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 " If not set then the syntax highlighting is disabled when returning from
 " CTRL+O
 set hidden
-
-" Parenthesis matching highlight settings
-hi MatchParen guibg=NONE guifg=green
 
 " NERDTree accessible from CTRL+e
 map <C-e> :NERDTreeToggle<CR>
