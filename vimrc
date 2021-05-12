@@ -31,6 +31,12 @@ Plugin 'dense-analysis/ale'
 
 Plugin 'digitaltoad/vim-pug'
 
+Plugin 'posva/vim-vue'
+
+Plugin 'dart-lang/dart-vim-plugin'
+Plugin 'natebosch/vim-lsc'
+Plugin 'natebosch/vim-lsc-dart'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -73,6 +79,8 @@ let g:ycm_show_diagnostics_ui = 0
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_enable_diagnostic_highlighting = 0
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
+nnoremap <leader>gn :YcmCompleter RefactorRename 
 
 " If not set then the syntax highlighting is disabled when returning from
 " CTRL+O
@@ -156,3 +164,18 @@ set spellfile=$HOME/.vim/spell/en.utf-8.add
 
 "ALE config
 let g:ale_linters_explicit = 1
+
+" Vimwiki
+let g:vimwiki_folding='list'
+
+" Language server protocol (LSP)
+"let g:lsc_server_commands = {'dart': 'dart_language_server'}
+
+"TODO: it works if I uncomment filetype detect, but then vim throws an error
+"when opening dart files regarding lsc-dart 
+" set comment character based of the file type (e.g javascript uses //)
+"let comment_symbol = ""
+""filetype detect
+"if &filetype == 'dart'
+"  let comment_symbol = "//"
+"endif
