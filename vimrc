@@ -141,6 +141,10 @@ command! Bd bp|bd#
 map <F5> :!cscope -f.cscope.out -Rbqk<CR>:cs add .cscope.out<CR><CR>
 map <F6> :!ctags -R -f .tags<CR>
 
+" Maximize window
+nnoremap <F8> <C-W>_<C-W><Bar>
+nnoremap <F7> <C-W>=
+
 " fuzzy search in file
 nnoremap / /
 nnoremap // :BLines<CR>
