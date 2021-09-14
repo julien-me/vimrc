@@ -1,5 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set encoding=utf-8
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -36,6 +37,8 @@ Plugin 'posva/vim-vue'
 Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'natebosch/vim-lsc'
 Plugin 'natebosch/vim-lsc-dart'
+
+Plugin 'peitalin/vim-jsx-typescript'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -171,6 +174,8 @@ let g:ale_linters_explicit = 1
 
 " Vimwiki
 let g:vimwiki_folding='list'
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " Language server protocol (LSP)
 "let g:lsc_server_commands = {'dart': 'dart_language_server'}
@@ -183,3 +188,5 @@ let g:vimwiki_folding='list'
 "if &filetype == 'dart'
 "  let comment_symbol = "//"
 "endif
+
+:command Jsonformat %!python3 -m json.tool
