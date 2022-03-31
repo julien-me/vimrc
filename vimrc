@@ -40,6 +40,10 @@ Plugin 'natebosch/vim-lsc-dart'
 
 Plugin 'peitalin/vim-jsx-typescript'
 
+Plugin 'tomlion/vim-solidity'
+
+Plugin 'editorconfig/editorconfig-vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
