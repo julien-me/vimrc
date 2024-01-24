@@ -11,8 +11,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'Valloric/YouCompleteMe'
-
 Plugin 'scrooloose/nerdtree.git'
 
 Plugin 'junegunn/fzf'
@@ -22,25 +20,7 @@ Plugin 'junegunn/fzf.vim'
 "Plugin 'tyrannicaltoucan/vim-deep-space'
 Plugin 'NLKNguyen/papercolor-theme'
 
-Plugin 'octol/vim-cpp-enhanced-highlight'
-
-Plugin 'rust-lang/rust.vim'
-
 Plugin 'vimwiki/vimwiki'
-
-Plugin 'dense-analysis/ale'
-
-Plugin 'digitaltoad/vim-pug'
-
-Plugin 'posva/vim-vue'
-
-Plugin 'dart-lang/dart-vim-plugin'
-Plugin 'natebosch/vim-lsc'
-Plugin 'natebosch/vim-lsc-dart'
-
-Plugin 'peitalin/vim-jsx-typescript'
-
-Plugin 'tomlion/vim-solidity'
 
 Plugin 'editorconfig/editorconfig-vim'
 
@@ -80,15 +60,6 @@ set background=light
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-"set runtimepath+=~/.vim/bundle/YouCompleteMe
-let g:ycm_max_diagnostics_to_display = 0
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_enable_diagnostic_signs = 0
-let g:ycm_enable_diagnostic_highlighting = 0
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
-nnoremap <leader>gn :YcmCompleter RefactorRename 
-
 " If not set then the syntax highlighting is disabled when returning from
 " CTRL+O
 set hidden
@@ -123,7 +94,6 @@ inoremap ' ''<left>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
-"inoremap () ()<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
@@ -145,9 +115,6 @@ set shiftwidth=2
 
 command! Bd bp|bd#
 
-map <F5> :!cscope -f.cscope.out -Rbqk<CR>:cs add .cscope.out<CR><CR>
-map <F6> :!ctags -R -f .tags<CR>
-
 " Maximize window
 nnoremap <F8> <C-W>_<C-W><Bar>
 nnoremap <F7> <C-W>=
@@ -168,29 +135,9 @@ set ruler
 " show file name at the bottom
 set laststatus=2
 
-" ycm settings
-let g:ycm_autoclose_preview_window_after_completion = 1
-
 set spellfile=$HOME/.vim/spell/en.utf-8.add
-
-"ALE config
-let g:ale_linters_explicit = 1
 
 " Vimwiki
 let g:vimwiki_folding='list'
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
-
-" Language server protocol (LSP)
-"let g:lsc_server_commands = {'dart': 'dart_language_server'}
-
-"TODO: it works if I uncomment filetype detect, but then vim throws an error
-"when opening dart files regarding lsc-dart 
-" set comment character based of the file type (e.g javascript uses //)
-"let comment_symbol = ""
-""filetype detect
-"if &filetype == 'dart'
-"  let comment_symbol = "//"
-"endif
-
-:command Jsonformat %!python3 -m json.tool
